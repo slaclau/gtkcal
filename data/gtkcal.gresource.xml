@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/">
+    <file preprocess="xml-stripblanks">ui/gcal-agenda-view.ui</file>
+    <file preprocess="xml-stripblanks">ui/gcal-week-view.ui</file>
+    <file preprocess="xml-stripblanks">ui/gcal-month-view.ui</file>
+    <file preprocess="xml-stripblanks">ui/gcal-week-header.ui</file>
+    <file preprocess="xml-stripblanks">ui/gcal-month-cell.ui</file>
+    <file preprocess="xml-stripblanks">ui/gcal-month-popover.ui</file>
+    <file preprocess="xml-stripblanks">ui/gcal-event-widget.ui</file>
+    <file>style.css</file>
+    <file>events.css</file>
+  </gresource>
+</gresources>

@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<interface>
+  <template class="GcalAgendaView" parent="GtkBox">
+    <property name="orientation">vertical</property>
+    <child>
+      <object class="GtkScrolledWindow" id="scrolled_window">
+        <property name="hexpand">True</property>
+        <property name="vexpand">True</property>
+        <child>
+          <object class="GtkListBox" id="list_box">
+            <property name="hexpand">True</property>
+            <property name="selection-mode">none</property>
+            <property name="vexpand">True</property>
+            <style>
+              <class name="background" />
+            </style>
+            <child>
+              <object class="GtkListBoxRow" id="no_events_row">
+                <property name="activatable">False</property>
+                <property name="child">
+                  <object class="GtkLabel">
+                    <property name="label" translatable="yes">No events</property>
+                    <property name="xalign">0</property>
+                    <style>
+                      <class name="no-events" />
+                      <class name="dim-label" />
+                    </style>
+                  </object>
+                </property>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>

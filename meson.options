@@ -1,0 +1,5 @@
+option('docs',
+  type: 'boolean',
+  value: false,
+  description: 'Whether to build the valadoc docs.',
+)

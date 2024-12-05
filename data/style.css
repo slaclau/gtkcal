@@ -1,0 +1,477 @@
+@define-color month_separator_color mix(@borders, @dark_5, 0.09);
+@define-color month_today_color alpha(@accent_bg_color, 0.15);
+@define-color month_today_hover_color alpha(@accent_bg_color, 0.25);
+@define-color month_selected_today_color alpha(@accent_bg_color, 0.33);
+@define-color month_selected_today_hover_color alpha(@accent_bg_color, 0.4);
+@define-color month_selected_border_color alpha(@accent_bg_color, 0.2);
+@define-color month_selected_background_color alpha(@accent_bg_color, 0.1);
+@define-color month_selected_background_hover_color alpha(@accent_bg_color, 0.17);
+
+/* Header labels */
+label.primary-label {
+    font-size: 16pt;
+    font-weight: bold;
+    color: @accent_color;
+    padding: 12px;
+}
+
+label.secondary-label {
+    font-size: 16pt;
+    font-weight: bold;
+    padding: 12px;
+    color: alpha(@theme_fg_color, 0.55);
+}
+
+calendar-view {
+    font-size: 10pt;
+}
+
+calendar-view.header,
+label.header {
+    font-size: 10pt;
+    font-weight: bold;
+    color: alpha(@theme_fg_color, 0.55);
+}
+
+calendar-view.current,
+weekgrid.current {
+    background-color: alpha(@accent_bg_color, 0.3);
+}
+
+calendar-view:selected {
+    color: @accent_color;
+    font-weight: bold;
+}
+
+
+/* Event Popover */
+popover.event-popover,
+popover.event-popover > contents {
+  padding: 0;
+}
+
+.search-viewport {
+  background-color: @theme_base_color;
+}
+
+/* calendar popover */
+.calendar-list {
+    background-color: transparent;
+}
+
+.calendar-list > list {
+    border-radius: 4px;
+}
+
+/* Edit dialog's header button */
+.sources-button {
+    margin-top: -6px;
+    margin-bottom: -6px;
+}
+
+.sources-button > button {
+    border-radius: 0;
+}
+
+/* defeats the ugly hover effect of the calendar color dot on buttons */
+.calendar-color-image {
+    -gtk-icon-filter: none;
+}
+
+/* adds a subtle shadow to the calendar color dot when it makes sense */
+image.calendar-color-image,
+button:active:not(:backdrop) .calendar-color-image,
+button:checked:not(:backdrop) .calendar-color-image,
+.calendars-list .calendar-color-image:not(:backdrop):not(:disabled),
+.calendar-list .calendar-color-image:not(:backdrop):not(:disabled),
+.sources-button:not(:backdrop):not(:disabled) .calendar-color-image {
+    -gtk-icon-shadow: 0 1px alpha(black, 0.1);
+}
+
+
+/* Date chooser */
+
+/* month/year controls */
+datechooser navigator { /* add some space between the two controls */
+  margin-right: 6px;
+  margin-left: 6px;
+  margin-bottom: 6px;
+}
+
+datechooser navigator label {
+  font-weight: bold;
+}
+
+datechooser navigator button {
+  padding: 0;
+}
+
+/* week numbers, with a style resembling GNOME Shell's */
+datechooser .weeknum{
+    font-size: smaller;
+    font-weight: bold;
+    margin: 6px;
+    padding: 4px;
+    border-radius: 5px;
+    background-color: alpha(@insensitive_fg_color, 0.2);
+    color: @insensitive_fg_color;
+}
+
+/* day names */
+datechooser .weekday {
+  color: @insensitive_fg_color;
+  font-size: smaller;
+  font-weight: bold;
+}
+
+/* days */
+datechooser button.day {
+  font-size: 10pt;
+  font-weight: normal;
+  min-height: 26px;
+  min-width: 26px;
+  margin: 2px;
+  padding: 3px;
+  transition: none;
+}
+
+datechooser button.day dot {
+  background-color: @theme_fg_color;
+  border-radius: 50%;
+  min-height: 3px;
+  min-width: 3px;
+}
+
+datechooser button.day:selected {
+  background-color: @accent_bg_color;
+  color: @accent_fg_color;
+  font-weight: bold;
+}
+
+datechooser button.day:selected dot {
+  background-color: @accent_fg_color;
+}
+
+datechooser button.day.non-workday {
+  color: @insensitive_fg_color;
+}
+
+datechooser button.day.non-workday:selected {
+  color: @accent_fg_color;
+}
+
+datechooser button.day.today {
+  color: @accent_color;
+}
+
+datechooser button.day.today dot {
+  background-color: @accent_color;
+}
+
+datechooser button.day.today:selected {
+  background-color: @accent_bg_color;
+  color: @accent_fg_color;
+}
+
+datechooser button.day.today:selected dot {
+  background-color: @accent_fg_color;
+}
+
+datechooser button.day.other-month:not(:hover),
+datechooser button.day.other-month:backdrop {
+  color: alpha(currentColor, 0.5);
+}
+
+datechooser button.day.other-month:not(:hover) dot,
+datechooser button.day.other-month:backdrop dot {
+  background-color: alpha(currentColor, 0.5);
+}
+
+datechooser button.day.other-month:hover:not(:backdrop) {
+  color: @insensitive_fg_color;
+}
+
+datechooser button.day.other-month:hover:not(:backdrop) dot {
+  background-color: @insensitive_fg_color;
+}
+
+label.month-name {
+    font-size: 16pt;
+    font-weight: bold;
+    color: @accent_color;
+    padding: 12px;
+}
+
+/* Week View CSS */
+
+.week-header {
+    padding: 0px;
+    border-bottom: solid @borders 1px;
+}
+
+.week-header .week-number {
+    font-size: 16pt;
+    font-weight: bold;
+    padding: 12px 12px 18px 12px;
+    color: alpha(@theme_fg_color, 0.25);
+}
+
+.week-header.week-temperature {
+    font-size: 10pt;
+    font-weight: bold;
+    color: alpha(@theme_fg_color, 0.55);
+}
+
+.week-header.lines {
+    color: alpha(@window_fg_color, 0.15);
+}
+
+weekhourbar > label {
+    font-size: 10pt;
+    padding: 4px 6px;
+}
+
+.week-view .lines {
+    color: alpha(@window_fg_color, 0.15);
+}
+
+weekgrid > widget.now-strip {
+    background-color: alpha(@accent_bg_color, 0.8);
+    margin: 0 0 0 1px;
+    min-height: 2px;
+}
+
+weekgrid:selected,
+.week-header:selected {
+    background-color: alpha(@accent_bg_color, 0.25);
+}
+
+weekgrid.dnd, .week-header.dnd {
+    background-color: alpha(@accent_bg_color, 0.25);
+}
+
+/*
+ * Month cell
+ */
+
+monthcell {
+    border: solid 1px alpha(@borders, 0.5);
+    border-width: 1px 0 0 1px;
+    background-color: transparent;
+    transition: background-color 200ms;
+}
+
+monthcell:hover {
+    background-color: @theme_bg_color;
+    transition: background-color 200ms;
+}
+
+/* Today */
+monthcell.today { background-color: @month_today_color; }
+monthcell.today:hover { background-color: @month_today_hover_color; }
+
+monthcell:selected.today { background-color: @month_selected_today_color; }
+monthcell:selected.today:hover { background-color: @month_selected_today_hover_color; }
+
+monthcell.today label.day-label {
+    background-color: alpha(@accent_bg_color, 0.8);
+    color: @accent_fg_color;
+    border-radius: 99px;
+    padding: 0 6px;
+}
+
+/* Out of Month */
+monthcell.out-of-month {
+    background-color: alpha(@theme_fg_color, 0.03);
+}
+
+monthcell.out-of-month:not(.today) {
+    background-color: alpha(@theme_fg_color, 0.01);
+}
+
+monthcell.out-of-month:hover,
+monthcell.out-of-month:not(.today):hover {
+    background-color: alpha(@theme_fg_color, 0.05);
+    transition: background-color 200ms;
+}
+
+monthcell.out-of-month label { color: alpha(@theme_fg_color, 0.4); }
+
+monthcell:not(.workday) {
+    background-color: alpha(@theme_fg_color, 0.01);
+}
+monthcell:not(.workday):hover {
+    background-color: alpha(@theme_fg_color, 0.03);
+}
+monthcell.today:not(.workday) {
+    background-color: alpha(@accent_bg_color, 0.15);
+}
+
+/* Selected */
+monthcell:selected,
+monthcell.out-of-month:selected,
+monthcell:not(.workday):selected {
+    border-color: @month_selected_border_color;
+    background-color: @month_selected_background_color;
+}
+
+monthcell:selected:hover,
+monthcell.out-of-month:selected:hover,
+monthcell:not(.workday):selected:hover {
+    background-color: @month_selected_background_hover_color;
+    transition: background-color 200ms;
+}
+
+monthcell:selected label.day-label,
+monthcell.out-of-month:selected label.day-label,
+monthcell:not(.workday):selected label.day-label {
+    font-weight: bold;
+}
+
+/* Button */
+monthcell button {
+    font-weight: normal;
+    padding: 0 4px;
+    border-radius: 0;
+    border-bottom: none;
+    border-right: none;
+}
+
+/* Separators */
+monthcell.separator-top,
+monthcell.separator-top:selected {
+    border-top: 1px solid @month_separator_color;
+}
+
+monthcell.separator-side:dir(ltr),
+monthcell.separator-side:selected:dir(ltr) {
+    border-left: 1px solid @month_separator_color;
+}
+
+monthcell:nth-child(7n + 1):dir(ltr),
+monthcell:nth-child(7n + 1):selected:dir(ltr) {
+    border-left-width: 0;
+}
+
+monthcell.separator-side:dir(rtl),
+monthcell.separator-side:selected:dir(rtl) {
+    border-right: 1px solid @month_separator_color;
+}
+
+monthcell:nth-child(7n + 1):dir(rtl),
+/* monthcell:nth-child(7n + 1):selected:dir(rtl)
+    border-right-width: 0;
+}*/
+
+/*
+ * Month row
+ */
+
+calendar-view.scrolling > box {
+  background-color: transparent;
+  box-shadow: @headerbar_shade_color 0 2px 4px;
+  transition: box-shadow 200ms;
+}
+
+
+calendar-view:not(.scrolling) > box {
+  transition: box-shadow 200ms;
+}
+
+/*
+ * Month popover
+ */
+
+monthpopover > box {
+  margin: 4px;
+  padding: 12px;
+  background-color: @popover_bg_color;
+}
+
+.notes-section box > textview {
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.notes-section box > textview > text {
+  background: none;
+}
+
+/* Agenda View CSS */
+
+agenda-view list > row {
+  padding: 2px 12px;
+}
+
+agenda-view list > label {
+  padding: 6px 12px;
+}
+
+.sidebar-pane agenda-view .background {
+  background: none;
+  color: inherit;
+}
+
+label.no-events {
+  font-style: italic;
+}
+
+/*
+ * Search
+ */
+
+searchbutton > popover > arrow {
+  background: none;
+  border: none;
+}
+
+searchbutton > popover listview > row:selected {
+  background-color: alpha(@accent_bg_color, 0.11);
+}
+
+/*
+ * Month selector
+ */
+
+datechooser {
+  padding: 6px;
+}
+
+datechooser .current-week {
+  background: alpha(currentColor, 0.1);
+  color: @headerbar_fg_color;
+  border-radius: 9px;
+}
+
+menubutton stack > box {
+  border-spacing: 4px;
+}
+
+/*
+ * Sync Indicator
+ */
+
+syncindicator {
+  padding: 6px;
+}
+
+/*
+ * Styles for the drop overlay.
+ * From Amberol https://gitlab.gnome.org/World/amberol/-/blob/0dd6250ffd294b14532c428dcb76ae42086a5923/src/gtk/style.css
+ */
+
+/* Removes the default style */
+.drop-target:drop(active) {
+  box-shadow: none;
+}
+
+/* Custom style for the drop overlay area */
+.drop-overlay-area {
+  padding: 32px;
+  color: var(--accent-fg-color);
+  background-color: alpha(var(--accent-bg-color), 0.5);
+}
+
+.blurred {
+  filter: blur(6px);
+}
