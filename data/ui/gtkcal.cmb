@@ -6,7 +6,7 @@
 	(2,1,"gcal-month-view.ui","gcal-month-view.ui",None,None,None,None,None,None,None)
   </ui>
   <object>
-	(2,1,"GtkWidget","GtkCalMonthView",None,None,None,None,0,None,None),
+	(2,1,"GtkWidget","GtkCal.MonthView",None,None,None,None,0,None,None),
 	(2,2,"GtkEventControllerScroll",None,1,None,None,None,0,None,None),
 	(2,3,"GtkEventControllerScroll",None,1,None,None,None,1,None,None),
 	(2,4,"GtkGestureClick",None,1,None,None,None,2,None,None),

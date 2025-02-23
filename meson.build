@@ -4,6 +4,9 @@ project('gtkcal', ['c', 'vala'],
   default_options: [ 'warning_level=1', 'werror=false', ],
 )
 
+version_components = meson.project_version().split('.')
+major_minor = version_components[0] + '.' + version_components[1]
+
 i18n = import('i18n')
 gnome = import('gnome')
 valac = meson.get_compiler('vala')
@@ -24,6 +27,8 @@ config_inc = include_directories('.')
 
 add_project_arguments('-DGETTEXT_PACKAGE="' + meson.project_name () + '"', language: 'c')
 add_project_arguments('-DLIBICAL_GLIB_UNSTABLE_API', language: 'c')
+
+#add_project_arguments('-DENABLE_TRACE', language: 'c')
 
 gtkcal_sources = []
 resources = gnome.compile_resources('gtkcal-resources',

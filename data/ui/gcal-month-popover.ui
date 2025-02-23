@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <template class="GcalMonthPopover" parent="GtkWidget">
+  <template class="GtkCalMonthPopover" parent="GtkWidget">
     <property name="visible">False</property>
     <child>
       <object class="GtkBox" id="main_box">
@@ -31,7 +31,7 @@
                 <property name="halign">end</property>
                 <property name="valign">start</property>
                 <property name="icon-name">window-close-symbolic</property>
-                <signal name="clicked" handler="close_button_clicked_cb" object="GcalMonthPopover" swapped="yes" />
+                <signal name="clicked" handler="close_button_clicked_cb" object="GtkCalMonthPopover" swapped="no" />
                 <style>
                   <class name="flat" />
                   <class name="circular" />
@@ -46,7 +46,7 @@
         <child>
           <object class="GtkListBox" id="listbox">
             <property name="vexpand">True</property>
-            <property name="selection-mode">none</property>
+            <!--<property name="selection-mode">none</property>-->
             <style>
               <class name="calendar-list" />
             </style>
@@ -57,7 +57,8 @@
         <child>
           <object class="GtkButton" id="new_event_button">
             <property name="label" translatable="yes">New Event…</property>
-            <signal name="clicked" handler="new_event_button_clicked_cb" object="GcalMonthPopover" swapped="no" />
+            <property name="visible">false</property>
+            <!--<signal name="clicked" handler="new_event_button_clicked_cb" object="GcalMonthPopover" swapped="no" />-->
             <style>
               <class name="flat" />
             </style>

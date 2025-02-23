@@ -54,7 +54,7 @@
           <object class="GtkButton" id="overflow_button">
             <property name="valign">end</property>
             <property name="sensitive">False</property>
-            <!--<signal name="clicked" handler="overflow_button_clicked_cb" object="GtkCalMonthCell" swapped="no" />-->
+            <signal name="clicked" handler="overflow_button_clicked_cb" object="GtkCalMonthCell" swapped="no" />
             <style>
               <class name="flat" />
             </style>

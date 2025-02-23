@@ -6,8 +6,8 @@
     <!-- Drag Source -->
     <child>
       <object class="GtkDragSource" id="drag_source">
-        <!--<signal name="prepare" handler="on_drag_source_prepare_cb" object="GtkCalEventWidget" swapped="no" />
-        <signal name="begin" handler="on_drag_source_begin_cb" object="GtkCalEventWidget" swapped="no" />-->
+        <!--<signal name="prepare" handler="on_drag_source_prepare_cb" object="GtkCal.EventWidget" swapped="no" />
+        <signal name="begin" handler="on_drag_source_begin_cb" object="GtkCal.EventWidget" swapped="no" />-->
       </object>
     </child>
 
@@ -15,8 +15,8 @@
     <child>
       <object class="GtkGestureClick">
         <property name="button">1</property>
-        <!--<signal name="pressed" handler="on_click_gesture_pressed_cb" object="GtkCalEventWidget" swapped="no" />
-        <signal name="released" handler="on_click_gesture_release_cb" object="GtkCalEventWidget" swapped="no" />-->
+        <signal name="pressed" handler="on_click_gesture_pressed_cb" object="GtkCalEventWidget" swapped="no" />
+        <signal name="released" handler="on_click_gesture_release_cb" object="GtkCalEventWidget" swapped="no" />
       </object>
     </child>
 
@@ -54,8 +54,8 @@
                     <!--
                     <binding name="visible">
                       <closure type="gboolean" function="get_vertical_enabled">
-                        <lookup name="event">GtkCalEventWidget</lookup>
-                        <lookup name="orientation">GtkCalEventWidget</lookup>
+                        <lookup name="event">GtkCal.EventWidget</lookup>
+                        <lookup name="orientation">GtkCal.EventWidget</lookup>
                       </closure>
                     </binding>
                     -->
@@ -105,7 +105,6 @@
                         <style>
                           <class name="dim-label" />
                         </style>
-                        <property name="label">timestamp_label</property>
                       </object>
                     </child>
                   </object>
