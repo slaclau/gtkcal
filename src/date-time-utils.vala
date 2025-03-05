@@ -52,7 +52,7 @@ namespace GtkCal {
         if (tzid == null) {
             tzid = "UTC";
         }
-        stdout.printf("TZID: %s\n", tzid);
+
         var tz = new TimeZone.identifier (tzid);
         var dt = new DateTime (tz,
                                idt.get_year (),
