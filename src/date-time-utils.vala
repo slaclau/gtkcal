@@ -49,6 +49,10 @@ namespace GtkCal {
 
     public DateTime icaltime_to_date_time (ICal.Time idt) {
         string tzid = idt.get_timezone ().get_tzid ();
+        if (tzid == null) {
+            tzid = "UTC";
+        }
+        stdout.printf("TZID: %s\n", tzid);
         var tz = new TimeZone.identifier (tzid);
         var dt = new DateTime (tz,
                                idt.get_year (),
