@@ -3,3 +3,8 @@ option('docs',
   value: true,
   description: 'Whether to build the docs.',
 )
+option('test',
+  type: 'boolean',
+  value: true,
+  description: 'Whether to run the tests.',
+)

@@ -38,5 +38,7 @@ resources = gnome.compile_resources('gtkcal-resources',
 
 subdir('src')
 subdir('po')
-subdir('test')
+if get_option('test')
+  subdir('test')
+endif
 subdir('docs')
