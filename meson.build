@@ -12,7 +12,9 @@ gnome = import('gnome')
 valac = meson.get_compiler('vala')
 cc = meson.get_compiler('c')
 
-valadoc = find_program('valadoc', required: get_option('docs'))
+if get_option('docs')
+  valadoc = find_program('valadoc', required: get_option('docs'))
+endif
 
 srcdir = meson.project_source_root() / 'src'
 
