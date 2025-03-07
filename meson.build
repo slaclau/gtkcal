@@ -41,4 +41,6 @@ subdir('po')
 if get_option('test')
   subdir('test')
 endif
-subdir('docs')
+if get_option('docs')
+  subdir('docs')
+endif
