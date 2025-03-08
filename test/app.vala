@@ -67,9 +67,10 @@ END:VEVENT";
                               ical_string, ical_string, ical_string,
                               ical_string, ical_string2, ical_string2a,
                               ical_string2, ical_string3, ical_string_test };
-    string[] colors = { "green", "red", "blue", "yellow" };
+    string[] colors = { "black" }; //, "red", "blue", "yellow" };
 
     app.activate.connect (() => {
+        GtkCal.init ();
         var window = new Adw.ApplicationWindow (app);
         GtkCal.MonthView month_view = new GtkCal.MonthView ();
         for ( int i = 0; i < ical_strings.length; i++ ) {
@@ -86,16 +87,22 @@ END:VEVENT";
         window.present ();
         var style_provider = new Gtk.CssProvider ();
         style_provider.load_from_resource ("/style.css");
+        var dark_provider = new Gtk.CssProvider ();
+        dark_provider.load_from_resource ("/style-dark.css");
         var events_provider = new Gtk.CssProvider ();
         events_provider.load_from_resource ("/events.css");
-        Gtk.StyleContext.add_provider_for_display (window.get_display (),
-                                                   events_provider, Gtk.
-                                                   STYLE_PROVIDER_PRIORITY_APPLICATION
-                                                   + 1);
-        Gtk.StyleContext.add_provider_for_display (window.get_display (),
-                                                   style_provider, Gtk.
-                                                   STYLE_PROVIDER_PRIORITY_APPLICATION
-                                                   + 1);
+        // Gtk.StyleContext.add_provider_for_display (window.get_display (),
+        //                                            events_provider, Gtk.
+        //                                            STYLE_PROVIDER_PRIORITY_APPLICATION
+        //                                            + 1);
+        // Gtk.StyleContext.add_provider_for_display (window.get_display (),
+        //                                            style_provider, Gtk.
+        //                                            STYLE_PROVIDER_PRIORITY_APPLICATION
+        //                                            + 1);
+        // Gtk.StyleContext.add_provider_for_display (window.get_display (),
+        //                                            dark_provider, Gtk.
+        //                                            STYLE_PROVIDER_PRIORITY_APPLICATION
+        //                                            + 1);
 
         string color_css = "";
         for ( int i = 0; i < colors.length; i++ ) {

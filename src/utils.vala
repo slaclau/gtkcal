@@ -1,14 +1,26 @@
 namespace GtkCal {
     private Gee.ArrayList<Gdk.RGBA?> colors;
     private string color_css;
+    private Adw.StyleManager style_manager;
+    private Gtk.CssProvider style_provider;
+    private Gtk.CssProvider extra_provider;
+    private Gtk.CssProvider events_provider;
 
     public bool init () {
+        debug("init GtkCal");
         colors = new Gee.ArrayList<Gdk.RGBA?>();
         color_css = "";
-        var style_provider = new Gtk.CssProvider ();
+        style_provider = new Gtk.CssProvider ();
         style_provider.load_from_resource ("/style.css");
-        var events_provider = new Gtk.CssProvider ();
+        events_provider = new Gtk.CssProvider ();
         events_provider.load_from_resource ("/events.css");
+
+        extra_provider = new Gtk.CssProvider ();
+
+        style_manager = Adw.StyleManager.get_default();
+        style_manager.notify["dark"].connect((s, p) => update_stylesheet());
+        style_manager.notify["high_contrast"].connect((s, p) => update_stylesheet());
+
         Gtk.StyleContext.add_provider_for_display (Gdk.Display.get_default (),
                                                    events_provider, Gtk.
                                                    STYLE_PROVIDER_PRIORITY_APPLICATION
@@ -17,6 +29,32 @@ namespace GtkCal {
                                                    style_provider, Gtk.
                                                    STYLE_PROVIDER_PRIORITY_APPLICATION
                                                    + 1);
+        Gtk.StyleContext.add_provider_for_display (Gdk.Display.get_default (),
+                                                   extra_provider, Gtk.
+                                                   STYLE_PROVIDER_PRIORITY_APPLICATION
+                                                   + 1);
+        update_stylesheet ();
+        return true;
+    }
+
+    private bool update_stylesheet() {
+        bool dark = style_manager.dark;
+        bool high_contrast = style_manager.high_contrast;
+
+        debug("dark: %b; hc: %b", dark, high_contrast);
+        if (dark) {
+            if (high_contrast) {
+                extra_provider.load_from_resource("/style-hc-dark.css");
+            } else {
+                extra_provider.load_from_resource("/style-dark.css");
+            }
+        } else {
+            if (high_contrast) {
+                extra_provider.load_from_resource("/style-hc.css");
+            } else {
+                extra_provider.load_from_string("");
+            }
+        }
         return true;
     }
 

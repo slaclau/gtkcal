@@ -1,0 +1,26 @@
+@define-color month_separator_color mix(@borders, @light_5, 0.14);
+@define-color month_today_color alpha(@accent_bg_color, 0.18);
+@define-color month_today_hover_color alpha(@accent_bg_color, 0.28);
+@define-color month_selected_today_color alpha(@accent_bg_color, 0.37);
+@define-color month_selected_today_hover_color alpha(@accent_bg_color, 0.44);
+@define-color month_selected_border_color alpha(@accent_bg_color, 0.25);
+@define-color month_selected_background_color alpha(@accent_bg_color, 0.17);
+@define-color month_selected_background_hover_color alpha(@accent_bg_color, 0.2);
+
+/*
+ * Event widget
+ */
+
+event.timed {
+    color: @light_1;
+    outline-color: rgba(0, 0, 0, 0.3);
+}
+
+/*
+ * Search
+ */
+
+searchbutton > popover listview > row:selected {
+  background-color: alpha(@accent_bg_color, 0.2);
+}
+
