@@ -93,6 +93,9 @@
                   <object class="GtkBox" id="horizontal_box">
                     <property name="spacing">4</property>
                     <child>
+                      <object class="GtkImage" id="icon"></object>
+                    </child>
+                    <child>
                       <object class="GtkInscription"  id="summary_inscription">
                         <property name="hexpand">True</property>
                         <property name="xalign">0.0</property>

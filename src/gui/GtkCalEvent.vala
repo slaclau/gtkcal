@@ -47,6 +47,11 @@ public class GtkCal.Event : Object {
         construct;
     }
 
+    public string icon_name {
+        get;
+        construct;
+    }
+
     private Gdk.RGBA _color = Gdk.RGBA ();
 
     public Gdk.RGBA color {
@@ -125,6 +130,17 @@ public class GtkCal.Event : Object {
         summary = component.get_summary ();
         location = component.get_location ();
         description = component.get_description ();
+        var property = component.get_first_property (ICal.PropertyKind.X_PROPERTY);
+        while (property != null) {
+            var name = property.get_property_name ();
+            if (name == "X-ICON-NAME") {
+                icon_name = property.get_value_as_string ();
+                property = null;
+            } else {
+                property = component.get_next_property (ICal.PropertyKind.X_PROPERTY);
+            }
+        }
+
         _color.parse ("green");
 
         if (date_end == null) {

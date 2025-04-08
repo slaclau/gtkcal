@@ -7,6 +7,8 @@ class GtkCal.EventWidget : Gtk.Widget, Gtk.Orientable {
     unowned Gtk.Inscription summary_inscription;
     [GtkChild]
     unowned Gtk.Label timestamp_label;
+    [GtkChild]
+    unowned Gtk.Image icon;
 
     public Gtk.Orientation orientation { get; set; }
     public GtkCal.TimestampPolicy timestamp_policy { get; set; default = GtkCal.
@@ -92,11 +94,23 @@ class GtkCal.EventWidget : Gtk.Widget, Gtk.Orientable {
 
             event.notify["color"].connect_after (update_color);
             event.notify["summary"].connect_after (queue_draw);
+            event.notify["icon_name"].connect_after (queue_draw);
 
             set_event_tooltip ();
 
             event.bind_property ("summary", summary_inscription, "text",
                                  BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE
+                                 );
+            event.bind_property ("icon-name", icon, "icon-name",
+                                 BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE
+                                 );
+            event.bind_property ("icon-name", icon, "visible",
+                                 BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE,
+                                 (binding, srcval, ref targetval) => {
+                                     string src = (string) srcval;
+                                     targetval.set_boolean (src == null ? false : true);
+                                     return true;
+                                 }
                                  );
 
             update_style ();

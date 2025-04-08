@@ -5,8 +5,16 @@ int main (string[] argv) {
 
     var ical_string_test =
         "BEGIN:VEVENT
-DTSTART:20241203T123000Z
-DTEND:20241203T210000Z
+DTSTART:20250408T123000Z
+DTEND:20250408T210000Z
+SUMMARY:s
+DESCRIPTION:d
+X-ICON-NAME:application-community-symbolic
+END:VEVENT";
+    var ical_string_test2 =
+        "BEGIN:VEVENT
+DTSTART:20250408T123000Z
+DTEND:20250408T210000Z
 SUMMARY:s
 DESCRIPTION:d
 END:VEVENT";
@@ -66,8 +74,9 @@ END:VEVENT";
     string[] ical_strings = { ical_string, ical_string1, ical_string,
                               ical_string, ical_string, ical_string,
                               ical_string, ical_string2, ical_string2a,
-                              ical_string2, ical_string3, ical_string_test };
-    string[] colors = { "black" }; //, "red", "blue", "yellow" };
+                              ical_string2, ical_string3, ical_string_test,
+                              ical_string_test2 };
+    string[] colors = { "black", "red", "blue", "yellow" };
 
     app.activate.connect (() => {
         GtkCal.init ();
