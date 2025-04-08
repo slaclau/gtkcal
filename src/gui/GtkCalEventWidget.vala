@@ -69,6 +69,7 @@ class GtkCal.EventWidget : Gtk.Widget, Gtk.Orientable {
         return new GtkCal.EventWidget (original.event);
     }
     construct {
+        set_cursor_from_name("pointer");
         orientation = Gtk.Orientation.HORIZONTAL;
 
         notify["timestamp-policy"].connect_after (update_timestamp);
