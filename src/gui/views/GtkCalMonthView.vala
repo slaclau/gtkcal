@@ -186,11 +186,11 @@ public class GtkCal.MonthView : Gtk.Widget, Gtk.Buildable, GtkCal.View, GtkCal.
                 DateTime week_start = GtkCal.date_time_get_start_of_week (
                     row_date);
                 DateTime week_end = week_start.add_weeks (1);
-                GtkCal.Range range = new GtkCal.Range (week_start, week_end,
+                GtkCal.Range _range = new GtkCal.Range (week_start, week_end,
                                                        GTKCAL_RANGE_DEFAULT);
 
                 GtkCal.MonthViewRow row = (GtkCal.MonthViewRow) week_rows[i];
-                row.range = range;
+                row.range = _range;
             }
         }
 
@@ -636,7 +636,7 @@ public class GtkCal.MonthView : Gtk.Widget, Gtk.Buildable, GtkCal.View, GtkCal.
         GtkCal.MonthViewRow first_row = week_rows.remove_at (0);
         first_row.range = new_range;
 
-        week_rows.insert (week_rows.size - 1, first_row);
+        week_rows.insert (week_rows.size, first_row);
         add_cached_events_to_row (first_row);
     }
 
