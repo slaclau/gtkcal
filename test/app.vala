@@ -86,7 +86,6 @@ END:VEVENT";
             var ical_event = new ICal.Component.from_string (ical_strings[i]);
             var event = new GtkCal.Event (ical_event);
             var _col = Gdk.RGBA ();
-            // _col.parse(colors[i % colors.length]);
             _col.parse (colors[Random.int_range (0, colors.length)]);
             event.color = _col;
             month_view.add_event (event);
@@ -94,24 +93,6 @@ END:VEVENT";
 
         window.set_content (month_view);
         window.present ();
-        var style_provider = new Gtk.CssProvider ();
-        style_provider.load_from_resource ("/style.css");
-        var dark_provider = new Gtk.CssProvider ();
-        dark_provider.load_from_resource ("/style-dark.css");
-        var events_provider = new Gtk.CssProvider ();
-        events_provider.load_from_resource ("/events.css");
-        // Gtk.StyleContext.add_provider_for_display (window.get_display (),
-        //                                            events_provider, Gtk.
-        //                                            STYLE_PROVIDER_PRIORITY_APPLICATION
-        //                                            + 1);
-        // Gtk.StyleContext.add_provider_for_display (window.get_display (),
-        //                                            style_provider, Gtk.
-        //                                            STYLE_PROVIDER_PRIORITY_APPLICATION
-        //                                            + 1);
-        // Gtk.StyleContext.add_provider_for_display (window.get_display (),
-        //                                            dark_provider, Gtk.
-        //                                            STYLE_PROVIDER_PRIORITY_APPLICATION
-        //                                            + 1);
 
         string color_css = "";
         for ( int i = 0; i < colors.length; i++ ) {
