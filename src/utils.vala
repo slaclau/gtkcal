@@ -7,7 +7,7 @@ namespace GtkCal {
     private Gtk.CssProvider events_provider;
 
     public bool init () {
-        debug("init GtkCal");
+        debug ("init GtkCal");
         colors = new Gee.ArrayList<Gdk.RGBA?>();
         color_css = "";
         style_provider = new Gtk.CssProvider ();
@@ -17,9 +17,10 @@ namespace GtkCal {
 
         extra_provider = new Gtk.CssProvider ();
 
-        style_manager = Adw.StyleManager.get_default();
-        style_manager.notify["dark"].connect((s, p) => update_stylesheet());
-        style_manager.notify["high_contrast"].connect((s, p) => update_stylesheet());
+        style_manager = Adw.StyleManager.get_default ();
+        style_manager.notify["dark"].connect ((s, p) => update_stylesheet ());
+        style_manager.notify["high_contrast"].connect ((s, p) =>
+                                                       update_stylesheet ());
 
         Gtk.StyleContext.add_provider_for_display (Gdk.Display.get_default (),
                                                    events_provider, Gtk.
@@ -37,32 +38,32 @@ namespace GtkCal {
         return true;
     }
 
-    private bool update_stylesheet() {
+    private bool update_stylesheet () {
         bool dark = style_manager.dark;
         bool high_contrast = style_manager.high_contrast;
 
-        debug("dark: %b; hc: %b", dark, high_contrast);
+        debug ("dark: %b; hc: %b", dark, high_contrast);
         if (dark) {
             if (high_contrast) {
-                extra_provider.load_from_resource("/style-hc-dark.css");
+                extra_provider.load_from_resource ("/style-hc-dark.css");
             } else {
-                extra_provider.load_from_resource("/style-dark.css");
+                extra_provider.load_from_resource ("/style-dark.css");
             }
         } else {
             if (high_contrast) {
-                extra_provider.load_from_resource("/style-hc.css");
+                extra_provider.load_from_resource ("/style-hc.css");
             } else {
-                extra_provider.load_from_string("");
+                extra_provider.load_from_string ("");
             }
         }
         return true;
     }
 
-    public bool add_color_to_css(Gdk.RGBA color) {
+    public bool add_color_to_css (Gdk.RGBA color) {
         if (color in colors) {
             return false;
         }
-        colors.add(color);
+        colors.add (color);
         color_css = "";
         for ( int i = 0; i < colors.size; i++ ) {
             var _color = colors[i];

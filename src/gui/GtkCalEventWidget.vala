@@ -69,7 +69,7 @@ class GtkCal.EventWidget : Gtk.Widget, Gtk.Orientable {
         return new GtkCal.EventWidget (original.event);
     }
     construct {
-        set_cursor_from_name("pointer");
+        set_cursor_from_name ("pointer");
         orientation = Gtk.Orientation.HORIZONTAL;
 
         notify["timestamp-policy"].connect_after (update_timestamp);
@@ -106,12 +106,13 @@ class GtkCal.EventWidget : Gtk.Widget, Gtk.Orientable {
                                  BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE
                                  );
             event.bind_property ("icon-name", icon, "visible",
-                                 BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE,
+                                 BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE
+                                 ,
                                  (binding, srcval, ref targetval) => {
-                                     string src = (string) srcval;
-                                     targetval.set_boolean (src == null ? false : true);
-                                     return true;
-                                 }
+                string src = (string) srcval;
+                targetval.set_boolean (src == null ? false : true);
+                return true;
+            }
                                  );
 
             update_style ();
