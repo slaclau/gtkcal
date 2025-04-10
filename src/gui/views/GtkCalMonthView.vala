@@ -81,6 +81,7 @@ public class GtkCal.MonthView : Gtk.Widget, Gtk.Buildable, GtkCal.View, GtkCal.
     /** Construction **/
 
     construct {
+        add_css_class ("view");
         this.update_weekday_labels ();
         week_rows = new Gee.ArrayList<GtkCal.MonthViewRow>();
 
