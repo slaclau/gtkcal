@@ -30,7 +30,9 @@ config_inc = include_directories('.')
 add_project_arguments('-DGETTEXT_PACKAGE="' + meson.project_name () + '"', language: 'c')
 add_project_arguments('-DLIBICAL_GLIB_UNSTABLE_API', language: 'c')
 
-#add_project_arguments('-DENABLE_TRACE', language: 'c')
+if get_option('trace')
+  add_project_arguments('-DENABLE_TRACE', language: 'c')
+endif
 
 gtkcal_sources = []
 resources = gnome.compile_resources('gtkcal-resources',

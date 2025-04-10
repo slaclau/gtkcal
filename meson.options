@@ -8,3 +8,8 @@ option('test',
   value: true,
   description: 'Whether to run the tests.',
 )
+option('trace',
+  type: 'boolean',
+  value: false,
+  description: 'Whether to run the tests.',
+)
