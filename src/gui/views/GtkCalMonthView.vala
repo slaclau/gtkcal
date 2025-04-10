@@ -191,6 +191,7 @@ public class GtkCal.MonthView : Gtk.Widget, Gtk.Buildable, GtkCal.View, GtkCal.
 
                 GtkCal.MonthViewRow row = (GtkCal.MonthViewRow) week_rows[i];
                 row.range = _range;
+                add_cached_events_to_row(row);
             }
         }
 
