@@ -80,6 +80,7 @@ END:VEVENT";
 
     app.activate.connect (() => {
         GtkCal.init ();
+        GtkCal.activate_weather_service (true);
         var window = new Adw.ApplicationWindow (app);
         GtkCal.MonthView month_view = new GtkCal.MonthView ();
         for ( int i = 0; i < ical_strings.length; i++ ) {

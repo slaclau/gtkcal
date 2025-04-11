@@ -24,3 +24,10 @@ test_simple = executable('test_simple', 'test.vala',
   include_directories: include_directories('../src'),
   install: false,
 )
+
+test_weather = executable('test_weather', 'weather.vala',
+  dependencies: [gtkcal_deps, gtkcal_lib_dep],
+  link_with: gtkcal_lib,
+  include_directories: include_directories('../src'),
+  install: false,
+)
