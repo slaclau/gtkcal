@@ -5,16 +5,20 @@ gtkcal_deps = [
   dependency('gee-0.8'),
   dependency('libical-glib', version: '>= 1.0'),
   dependency('libsoup-3.0'),
+  dependency('gweather4'),
+  dependency('libgeoclue-2.0'),
   valac.find_library('posix'),
   cc.find_library('m'),
 ]
 
 subdir('gui')
+subdir('weather')
 
 gtkcal_sources += files([
   'enums.vala',
   'utils.vala',
   'date-time-utils.vala',
+  'GtkCalTimer.vala',
 ])
 foreach src : gtkcal_sources
   message(src.full_path())

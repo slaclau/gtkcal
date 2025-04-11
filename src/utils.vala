@@ -6,6 +6,8 @@ namespace GtkCal {
     private Gtk.CssProvider extra_provider;
     private Gtk.CssProvider events_provider;
 
+    private WeatherService weather_service;
+
     public bool init () {
         debug ("init GtkCal");
         colors = new Gee.ArrayList<Gdk.RGBA?>();
@@ -34,8 +36,19 @@ namespace GtkCal {
                                                    extra_provider, Gtk.
                                                    STYLE_PROVIDER_PRIORITY_APPLICATION
                                                    + 1);
+
         update_stylesheet ();
+        weather_service = new WeatherService ();
+        weather_service.max_days = 10;
         return true;
+    }
+
+    public void activate_weather_service (bool activate) {
+        if (activate) {
+            weather_service.activate ();
+        } else {
+            weather_service.deactivate ();
+        }
     }
 
     private bool update_stylesheet () {

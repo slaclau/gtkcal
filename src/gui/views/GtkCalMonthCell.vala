@@ -13,6 +13,10 @@ public class GtkCal.MonthCell : Adw.Bin {
     private unowned Gtk.Button overflow_button;
     [GtkChild]
     private unowned Gtk.Inscription overflow_inscription;
+    [GtkChild]
+    private unowned Gtk.Image weather_icon;
+    [GtkChild]
+    private unowned Gtk.Label temp_label;
 
     private DateTime _date;
     public DateTime date {
@@ -38,7 +42,42 @@ public class GtkCal.MonthCell : Adw.Bin {
                 string month_name = value.format ("%b");
                 month_name_label.set_text (month_name);
             }
-            //update_weather();
+            update_weather();
+        }
+    }
+
+    private WeatherInfo weather_info;
+
+    construct {
+        weather_service.weather_changed.connect(update_weather);
+
+        update_weather ();
+
+        weather_service.hold ();
+    }
+
+    ~MonthCell () {
+        weather_service.release ();
+    }
+
+    private void update_weather () {
+        if (date == null) {
+            return;
+        }
+        Date current_date = new Date ();
+        current_date.set_dmy((DateDay) date.get_day_of_month (), date.get_month (), (DateYear) date.get_year ());
+        var new_weather_info = weather_service.get_weather_info_for_date(current_date);
+
+        if (weather_info == new_weather_info) return;
+
+        weather_info = new_weather_info;
+
+        if (weather_info == null) {
+            weather_icon.clear();
+            temp_label.set_text("");
+        } else {
+            weather_icon.set_from_icon_name (weather_info.icon_name);
+            temp_label.set_text (weather_info.temperature);
         }
     }
 
